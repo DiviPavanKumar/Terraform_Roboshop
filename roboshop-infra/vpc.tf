@@ -17,4 +17,7 @@ module "this" {
     #Database Subnet Variables
     database_subnet_cidr = var.database_subnet_cidr
     database_subnet_names = var.database_subnet_names
+
+    #public route table tags
+    public_route_table_tags = var.public_route_table_tags
 }   

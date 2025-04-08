@@ -59,3 +59,11 @@ resource "aws_subnet" "database" {
     }
    ) 
 }
+
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.main.id
+  tags = merge(
+    var.common_tags,
+    var.public_route_table_tags
+   )
+}
