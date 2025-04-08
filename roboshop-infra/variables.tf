@@ -58,3 +58,15 @@ variable "public_route_table_tags" {
     Name = "Roboshop_Public"
   }
 }
+
+variable "private_route_table_tags" {
+  default = {
+    Name = "Roboshop_Private"
+  }
+}
+
+variable "database_route_table_tags" {
+  default = {
+    Name = "Roboshop_Database"
+  }
+}
