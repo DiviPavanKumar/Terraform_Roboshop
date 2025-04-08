@@ -1,28 +1,23 @@
 terraform {
+  # Specify the required providers and their versions
   required_providers {
     aws = {
-      source = "hashicorp/aws"
-      version = "5.94.1"
+      source  = "hashicorp/aws"
+      version = "5.94.1"  # Locking provider version for stability
     }
   }
 
-backend "s3" {
-    bucket         = "remote-state-file-practice"
-    key            = "VPC_Roboshop"
-    region         = "us-east-1"
-    encrypt = true
-    use_lockfile = true
+  # Remote backend configuration using AWS S3 for storing Terraform state
+  backend "s3" {
+    bucket         = "remote-state-file-practice"  # S3 bucket name to store state
+    key            = "VPC_Roboshop"                # Unique key (file path) for the state file
+    region         = "us-east-1"                   # Region where the S3 bucket is hosted
+    encrypt        = true                          # Enable encryption at rest
+    use_lockfile   = true                          # Prevent concurrent operations (recommended)
   }
 }
 
+# Configure the AWS provider with the default region
 provider "aws" {
-    region = "us-east-1"
-#     default_tags {
-#         tags = {
-#             Environment = "Development"
-#             Project     = "Terraform_Roboshop"
-#             Owner       = "AWS-Terraform"
-#             CreatedBy   = "Pavan Kumar Divi"
-#         }
-#     }
+  region = "us-east-1"
 }
